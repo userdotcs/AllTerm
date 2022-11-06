@@ -8,11 +8,8 @@ commands = [
 
 
 def run_com(com):
-    try:
-        for command in commands:
-            if command.arg == com:
-                command.run()
-                return
-        raise CommandNotFoundException(f"'{com}' command not found.")
-    except CommandNotFoundException as e:
-        print(e)
+    for command in commands:
+        if command.arg == com:
+            command.run()
+            return
+    CommandNotFoundException(f"'{com}' command not found.")
