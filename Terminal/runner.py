@@ -3,7 +3,8 @@ from CommandSystem.errors import *
 
 commands = [
     BackCom(),
-    ExitCom()
+    ExitCom(),
+    MkdCom()
 ]
 
 
@@ -12,4 +13,4 @@ def run_com(com):
         if command.arg == com:
             command.run()
             return
-    CommandNotFoundException(f"'{com}' command not found.")
+    CommandNotFoundError(f"'{com}' command not found.")
