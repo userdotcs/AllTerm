@@ -3,5 +3,13 @@ class AllError:
         print(msg)
 
 
-class CommandNotFoundException(AllError):
+class CommandNotFoundError(AllError):
+    pass
+
+
+class PathNotDirError(AllError):
+    pass
+
+
+class WrongTypeError(AllError):
     pass
