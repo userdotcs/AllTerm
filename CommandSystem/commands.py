@@ -1,7 +1,7 @@
 from CommandSystem.command import Command
 import Basics.path as p
 import Terminal.terminal_info as ti
-
+from CommandSystem import errors as e
 
 class BackCom(Command):
     def __init__(self):
@@ -24,10 +24,17 @@ class MkdCom(Command):
         self.arg = "mkd"
 
     def run(self):
-        pathlist = p.listpath(ti.cur_dir)
-        a = 1
-        for path in pathlist:
-            print(f"{a}) {path}")
-            a += 1
+        if p.ispath(ti.cur_dir):
+            pathlist = p.listpath(ti.cur_dir)
+            a = 1
+            for path in pathlist:
+                print(f"{a}) {path}")
+                a += 1
 
-        ti.cur_dir += f"/{pathlist[ti.get_int_terminal_input('Numb') - 1]}"
+            numb = ti.get_int_terminal_input('Numb')
+            if numb == 0:
+                return
+            else:
+                ti.cur_dir += f"/{pathlist[numb - 1]}"
+        else:
+            e.PathNotDirError(f"'{ti.cur_dir}' is not directory.")
