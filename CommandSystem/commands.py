@@ -38,3 +38,15 @@ class MkdCom(Command):
                 ti.cur_dir += f"/{pathlist[numb - 1]}"
         else:
             e.PathNotDirError(f"'{ti.cur_dir}' is not directory.")
+
+
+class MkdlCom(Command):
+    def __init__(self):
+        self.arg = "mkdl"
+
+    def run(self):
+        dir = ti.get_str_terminal_input("Long name of dir")
+        if p.iscontains(dir):
+            ti.cur_dir = dir
+        else:
+            e.DirectoryNotFoundError(f"'{dir}' not found.")
