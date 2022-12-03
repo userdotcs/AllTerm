@@ -19,3 +19,6 @@ def listpath(path):
         return os.listdir(path)
     else:
         PathNotDirError(f"'{path}' is not directory.")
+
+def iscontains(dir):
+    return os.path.exists(dir)
