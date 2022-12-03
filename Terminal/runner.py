@@ -1,10 +1,12 @@
+import CommandSystem.command
 from CommandSystem.commands import *
 from CommandSystem.errors import *
 
 commands = [
     BackCom(),
     ExitCom(),
-    MkdCom()
+    MkdCom(),
+    MkdlCom()
 ]
 
 
