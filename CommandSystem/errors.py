@@ -13,3 +13,6 @@ class PathNotDirError(AllError):
 
 class WrongTypeError(AllError):
     pass
+
+class DirectoryNotFoundError(AllError):
+    pass
