@@ -1,12 +1,72 @@
-# Commands of AllTerm
+# AllTerm sys commands
 AllTerm have this commands:
-- 'mkd' allows you to select files from the folder.
-- 'mkdl' takes you to the desired location with the help of a long name.
-- 'exit' will close the program.
-- 'back' allows to go to the parent directory.
+- 'mkdir' allows you to select path.
+- 'up' allows to go to the parent directory.
+- 'quit' will close the program.
 
 # How to improve Allterm?
-Improving AllTerm is quite simple. If you derive the command you want from 'Command' and add it to the list, you can use the command with the program. *Designed for single-word commands only.*
+Adding our own command to AllTerm is simple! Write an AllTerm library file and put it in the 'commands' folder. A library file should look like this:
+
+```python
+# mkdir.py
+from command import Command, Req
+from errors import PathNotFound
+import console, os
+
+
+def mkdir(p: dict):
+    new = os.path.join(console.directory, p[0])
+    if os.path.exists(new):
+        console.directory = new
+        os.chdir(new)
+    elif os.path.exists(p[0]):
+        console.directory = p[0]
+        os.chdir(p[0])
+    else:
+        PathNotFound(new).alert()
+        return
+
+
+command_list = Command(mkdir, mkdir, mkdir, [Req()])
+```
+
+'Command' is base class for commands. 'errors' module is basic error module of program. 'console' module have console infos.
+
+In example, you will use it with `mkdir -desktop`
+
+If you want add a command group, file should look like this:
+```python
+# sys.py
+from command import Command, Req
+from errors import PathNotFound
+import console, os
+
+
+def mkdir(p: dict):
+    new = os.path.join(console.directory, p[0])
+    if os.path.exists(new):
+        console.directory = new
+        os.chdir(new)
+    elif os.path.exists(p[0]):
+        console.directory = p[0]
+        os.chdir(p[0])
+    else:
+        PathNotFound(new).alert()
+        return
+
+
+def up(p: dict):
+    new = os.path.dirname(console.directory)
+    console.directory = new # Set default path of console to up
+    os.chdir(new) # Set default path of program to up 
+
+
+command_list = {
+  "mkdir": Command(mkdir, mkdir, mkdir, [Req()]),
+  "up": Command(up, up, up, [])
+}
+```
+In example, you will use it with `sys mkdir -desktop` or `up`
 
 # What operating systems does AllTerm run on?
 AllTerm run on Windows, Linux and MacOS.
