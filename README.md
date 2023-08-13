@@ -1,3 +1,5 @@
+Minimum required python version: 3.6
+
 # AllTerm sys commands
 AllTerm have this commands:
 - 'mkdir' allows you to select path.
