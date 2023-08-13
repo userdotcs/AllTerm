@@ -57,8 +57,8 @@ def mkdir(p: dict):
 
 def up(p: dict):
     new = os.path.dirname(console.directory)
-    console.directory = new # Set default path of console to up
-    os.chdir(new) # Set default path of program to up 
+    console.directory = new
+    os.chdir(new)
 
 
 command_list = {
