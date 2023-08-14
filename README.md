@@ -68,7 +68,7 @@ command_list = {
   "up": Command(up, up, up, [])
 }
 ```
-In example, you will use it with `sys mkdir -desktop` or `up`
+In example, you will use it with `sys mkdir -desktop` or `sys up`
 
 # What operating systems does AllTerm run on?
 AllTerm run on Windows, Linux and MacOS.
