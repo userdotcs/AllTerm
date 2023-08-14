@@ -16,7 +16,7 @@ from errors import PathNotFound
 import console, os
 
 
-def mkdir(p: dict):
+def mkdir(p: list):
     new = os.path.join(console.directory, p[0])
     if os.path.exists(new):
         console.directory = new
@@ -44,7 +44,7 @@ from errors import PathNotFound
 import console, os
 
 
-def mkdir(p: dict):
+def mkdir(p: list):
     new = os.path.join(console.directory, p[0])
     if os.path.exists(new):
         console.directory = new
@@ -57,7 +57,7 @@ def mkdir(p: dict):
         return
 
 
-def up(p: dict):
+def up(p: list):
     new = os.path.dirname(console.directory)
     console.directory = new
     os.chdir(new)
