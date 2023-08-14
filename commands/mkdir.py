@@ -3,7 +3,7 @@ from errors import PathNotFound
 import console, os
 
 
-def mkdir(p: dict):
+def mkdir(p: list):
     new = os.path.join(console.directory, p[0]) # Path joining
     if os.path.exists(new):
         console.directory = new

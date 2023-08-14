@@ -1,8 +1,8 @@
 from command import Command, Req
 
 
-def quit(p: dict):
-    exit()
+def quit(p: list):
+    exit(int(p[0]))
 
 
-command_list = Command(quit, quit, quit, [])
+command_list = Command(quit, quit, quit, [0])
